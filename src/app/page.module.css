@@ -1,0 +1,545 @@
+@keyframes load
+{
+    0%
+    {
+        opacity: 0;
+    }
+    50%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 1;
+    }
+}
+@keyframes fade-in 
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
+@keyframes rotation 
+{
+    from 
+    {
+      transform: rotate(0deg)
+    }
+    to 
+    {
+      transform: rotate(360deg)
+    }
+}
+
+@keyframes bounce 
+{
+    from
+    {
+        transform: translateY(0px);
+    }
+    to 
+    {
+        transform: translateY(15px);
+    }
+}
+
+.head
+{
+    margin: 60px;
+}
+.header
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15pt;
+    margin: 60px;
+}
+.header h1
+{
+    width: fit-content;
+    margin: 0px;
+    margin-right: 0px;
+}
+.img
+{
+    margin-left: -8px;
+    animation: bounce .3s ease-in 5 alternate-reverse;
+}
+
+.footer
+{
+  width: fit-content;
+  margin: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#busca
+{
+    width: 285px;
+    height: 55px;
+    margin: 0;
+    padding: 5px;
+    background-color: rgba(221, 88, 214, 0.25);
+    border: solid 2px rgb(221, 88, 214);
+    color: rgb(253, 242, 210);
+    font-size: 12pt;
+    outline: none;
+}
+#busca:focus
+{
+    border: solid 3px rgb(221, 88, 214);
+    outline: none;
+}
+#busca::placeholder 
+{ 
+    color: rgba(253, 242, 210, 0.5);
+    opacity: 1; /* Firefox */
+}
+#resultados
+{
+    display: flex;
+    flex-direction: column;
+    height: 200px; 
+    width: fit-content;
+    list-style: none;
+    margin: auto;
+    padding: 0;
+    align-items: center;
+    overflow: auto;   
+
+}
+#resultados::-webkit-scrollbar
+{
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 10px;
+}
+#resultados::-webkit-scrollbar-thumb
+{
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+#resultados li
+{   
+    text-align: center;
+    width: 271px;
+    height: 20px;
+    padding-inline-start: 0px;
+    margin: 0;
+    padding-block: 5px;
+    border-bottom: solid 2px rgb(221, 88, 214);
+}
+
+#resultados li:hover
+{
+    background-color: rgba(221, 88, 214, 0.25);
+    color: rgb (253, 242, 210);
+    cursor: pointer;
+}
+.subtitulo
+{
+    font-weight: 700;
+    padding-block: 20px;
+    margin-block: 0px;
+}
+#tabela 
+{
+    border-collapse: collapse;
+    font-size: 10pt;
+    padding: 8px;
+    animation: load 1.5s ease-in-out;
+    margin: auto;
+}
+
+#tabela td 
+{
+    border-bottom: solid 2px rgb(37, 7, 36);
+    border-left: solid 2px rgb(37, 7, 36);
+    border-right: solid 2px rgb(37, 7, 36);
+    min-width: 50px;
+}
+.nome
+{
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+    height: 50px;
+    margin: 0px;
+}
+.stats
+{
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 50px;
+    margin: 0px;
+    padding-block: 5px;
+}
+.teams
+{
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 50px;
+    margin: 0px;
+    padding-block: 5px;
+}
+.teams img
+{
+    height: 40px;
+    width: 40px;
+}
+.time
+{
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 50px;
+    margin: 0px;
+    padding-block: 5px;
+}
+.time img
+{
+    width: 35px;
+    height: 35px;
+    margin: 0px;
+    font-size: 10pt;
+}
+#tabela th
+{
+    background-color: rgb(99, 0, 112);
+    color: rgb(255, 231, 155);
+    border: solid 2px rgb(37, 7, 36);
+    height: 40px;
+}
+#tips
+{
+    background-color: rgb(237,221,78);
+    color: rgb(37, 7, 36);
+    font-weight: 700;
+}
+.respostas td
+{
+    margin: auto;
+    font-weight: 700;
+    color: rgb(37, 7, 36);
+    border-bottom: solid 2px rgb(37, 7, 36);
+    border-left: solid 2px rgb(37, 7, 36);
+    border-right: solid 2px rgb(37, 7, 36);
+    
+}
+.respostas
+{
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    margin: auto;
+    font-size: 10pt;
+    
+}
+
+.respostas .nome
+{
+    background-color: #fdf2d2;
+}
+
+.respostas .stats
+{
+    background-color: #fdf2d2;
+}
+.respostas .teams
+{
+    background-color: #fdf2d2;
+}
+.respostas .acertou 
+{
+    background-color: #a5fa97;
+}
+.fade_in
+{
+    animation: fade-in .8s ease-in-out;
+}
+#help
+{
+    animation: fade-in .5s ease-in-out;
+    width: 900px;
+    height: fit-content;    
+    background-color: rgb(64, 18, 139);
+    border-radius: 20px;
+    border: 0px;
+    color: rgb(255, 231, 155);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    padding: 0px;
+    padding-inline: 15px;
+    padding-top: 10px;
+}
+#help #tabela
+{
+    scale: 0.85;
+}
+#help p 
+{
+    margin-block: 20px;
+}
+
+.button 
+{
+    background-color: rgba(221, 88, 214, 0.2);
+    width: 120px;
+    padding-block: 10px;
+    padding-inline: 5px;
+    border: solid 3px rgb(221, 88, 214);
+    color: rgb(255, 231, 155);
+    font-weight: 700;
+    font-size: 12pt;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 21px;
+    outline: none;
+    cursor: pointer;
+    margin-block: 30px;
+}
+
+.button:hover
+{
+    box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+    background-color: rgba(221, 88, 214, 0.4);
+}
+
+.button:active 
+{
+    background-color: rgba(221, 88, 214, 0.55);
+    box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 4px;
+}
+.reminder
+{
+    font-size: 8pt;
+    margin-block: 0px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+.abrirHelp
+{
+    text-decoration: underline;
+    font-size: 10pt;
+    padding-bottom: 20px;
+    outline: none;
+    height: 20px;
+    width: fit-content;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    color: rgb(255, 231, 155); 
+    font-weight: 700;
+    margin: auto;
+}
+.abrirHelp:hover
+{
+    cursor: pointer;
+    font-size: 11pt;
+}
+
+#terminou
+{
+    animation: fade-in .3s ease-in-out;
+    width: 450px;
+    height: fit-content;    
+    background-color: rgb(64, 18, 139);
+    border-radius: 20px;
+    border: 0px;
+    color: rgb(255, 231, 155);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
+    justify-items: center;
+    font-weight: 700;
+}
+#terminou img
+{
+    width: 325px;
+    height: 237.5px;
+    margin: 10px;
+}
+
+.right
+{
+    color: #a5fa97;
+}
+
+.wrong
+{
+    color: rgb(255, 165, 165);
+}
+
+
+
+.close_container{
+  position: relative;
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.leftright{
+  height: 3px;
+  width: 30px;
+  position: absolute;
+  margin-top: 24px;
+  margin-left: 5px;
+  background-color: rgb(255, 231, 155);
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all .3s ease-in;
+
+}
+
+.rightleft
+{
+    height: 3px;
+    width: 30px;
+    position: absolute;
+    margin-top: 24px;
+    margin-left: 5px;
+    background-color: rgb(255, 231, 155);
+    border-radius: 2px;
+    transform: rotate(-45deg);
+    transition: all .3s ease-in;
+}
+
+#close
+{
+    color: rgb(255, 231, 155);
+    font-size: 6pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all .3s ease-in;
+    opacity: 0;
+    margin: auto;
+    margin-top: 3px;
+    padding-left: 1px;
+    text-align: center;
+}
+
+
+.close_container:hover .leftright
+{
+    transform: rotate(-45deg);
+    background-color: rgb(255, 165, 165);
+}
+.close_container:hover .rightleft
+{
+    transform: rotate(45deg);
+    background-color: rgb(255, 165, 165);
+}
+.fecContainer:hover #close
+{
+    opacity: 1;
+}
+
+.fecContainer
+{
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 25px;
+}
+.checkmark__circle
+{
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #a5fa97;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier( 0, 0.832, 0.43, 0.99 ) forwards
+}
+
+.checkmark
+{
+    width: 56px;
+    height: 56px;border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: rgb(64, 18, 139);
+    stroke-miterlimit: 10;
+    margin: 10px auto;
+    box-shadow: inset 0px 0px 0px #a5fa97;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+}
+
+.checkmark__check
+{
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+}
+
+@keyframes stroke
+{
+    100%
+    {stroke-dashoffset: 0}
+}
+
+@keyframes scale
+{
+    0%, 100%
+    {
+        transform: none
+    }
+    50%
+    {
+        transform: scale3d(1.1, 1.1, 1)
+    }
+}
+@keyframes fill
+{
+    100%
+    {
+        box-shadow: inset 0px 0px 0px 30px #a5fa97
+    }
+}
+
+@keyframes fill-wrong
+{
+    100%
+    {
+        box-shadow: inset 0px 0px 0px 30px #FFA5A5
+    }
+}
+.checkmark__circle_wrong
+{
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #FFA5A5;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+}
+
+.checkmark_w
+{
+    width: 56px;
+    height: 56px;border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: rgb(64, 18, 139);
+    stroke-miterlimit: 10;
+    margin: 10px auto;
+    box-shadow: inset 0px 0px 0px #FFA5A5;
+    animation: fill-wrong .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
