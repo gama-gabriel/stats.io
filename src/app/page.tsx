@@ -6,6 +6,7 @@ import Busca from './components/busca'
 import imagem from '../../public/statsio.png' 
 import icone from './favicon.ico'
 import { ThemeProvider } from 'next-themes'
+import type { AppProps } from 'next/app'
 
 
 type Player = 
@@ -53,7 +54,7 @@ async function loadData(): Promise<any>
 
 
 
-export default async function Home() 
+export default async function Home( {Component, pageProps}: AppProps ) 
 {
   const data = await loadData()
 
@@ -98,6 +99,7 @@ export default async function Home()
 
     <footer className={styles.footer}>made by: Gabriel Gama</footer>  
     </>
+    <Component {...pageProps} />
     </ThemeProvider>
   )
 }
