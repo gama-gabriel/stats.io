@@ -5,6 +5,7 @@ import ItensLista from '../../components/itensLista'
 import Busca from './components/busca'
 import imagem from '../../public/statsio.png' 
 import icone from './favicon.ico'
+import { ThemeProvider } from 'next-themes'
 
 
 type Player = 
@@ -83,6 +84,7 @@ export default async function Home()
 
 
   return (
+    <ThemeProvider attribute='dark'>
     <>
     <div className='fullbody'>
       <div className={styles.header}>
@@ -96,5 +98,6 @@ export default async function Home()
 
     <footer className={styles.footer}>made by: Gabriel Gama</footer>  
     </>
+    </ThemeProvider>
   )
 }
