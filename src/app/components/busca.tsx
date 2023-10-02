@@ -6,11 +6,12 @@ import Tabela from './tabela'
 import Linha from './linha'
 import { Player } from '../types/player'
 import Mensagem from './mensagem'
-import { truncate } from 'fs'
+import { ThemeProvider } from 'next-themes'
+import type { AppProps } from 'next/app'
 
 
 
-export default function Buscar({ lista, resposta, img_times, player_images }: { lista : Player[], resposta : any, img_times: any, player_images: any})
+export default function Buscar({ lista, resposta, img_times, player_images, Component, pageProps }: { lista : Player[], resposta : any, img_times: any, player_images: any, Component: any, pageProps: AppProps} )
 {
   const [terminado, setTerminado] = useState(false)
   const [replay, setReplay] = useState(false)
@@ -79,6 +80,7 @@ export default function Buscar({ lista, resposta, img_times, player_images }: { 
   }
   
   return(
+    <ThemeProvider attribute='dark'>
     <>
       <input type="search" name={styles.busca} id={styles.busca} placeholder={`Guess ${tentativa} of 8`} autoComplete="off" value={busca} onChange={(e)=>(setBusca(e.target.value))} disabled={terminado || tentativa > 8 ? true : false}/><br/>
 
@@ -134,6 +136,8 @@ export default function Buscar({ lista, resposta, img_times, player_images }: { 
         <button className={styles.button} onClick={() => window.location.reload()}>Play again</button>
       }
     </>
+    <Component {...pageProps} />
+    </ThemeProvider>
   )
 
 }

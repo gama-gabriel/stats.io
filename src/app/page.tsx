@@ -54,7 +54,7 @@ async function loadData(): Promise<any>
 
 
 
-export default async function Home( {Component, pageProps}: AppProps ) 
+export default async function Home() 
 {
   const data = await loadData()
 
@@ -85,7 +85,7 @@ export default async function Home( {Component, pageProps}: AppProps )
 
 
   return (
-    <ThemeProvider attribute='dark'>
+    
     <>
     <div className='fullbody'>
       <div className={styles.header}>
@@ -99,7 +99,6 @@ export default async function Home( {Component, pageProps}: AppProps )
 
     <footer className={styles.footer}>made by: Gabriel Gama</footer>  
     </>
-    <Component {...pageProps} />
-    </ThemeProvider>
+
   )
 }
