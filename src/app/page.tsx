@@ -6,6 +6,7 @@ import Busca from './components/busca'
 import imagem from '../../public/statsio.png' 
 import icone from './favicon.ico'
 
+
 type Player = 
 {
   id: number,
