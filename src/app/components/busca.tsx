@@ -95,7 +95,7 @@ export default function Buscar({ lista, resposta, img_times, player_images}: { l
       <p className={styles.subtitulo}>Which player averaged these stats during the 22-23 regular season?</p>
       <p onClick={abrir} className={styles.abrirHelp}>How to play</p>
 
-      <Tabela lista={resposta} tentativa={tentativa} terminou={terminado} img_times={img_times}></Tabela>
+      <Tabela lista={resposta} tentativa={tentativa} terminou={acertou} img_times={img_times}></Tabela>
 
       <table className={styles.respostas}>
         <tbody>
