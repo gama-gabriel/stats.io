@@ -11,7 +11,7 @@ import type { AppProps } from 'next/app'
 
 
 
-export default function Buscar({ lista, resposta, img_times, player_images, Component, pageProps }: { lista : Player[], resposta : any, img_times: any, player_images: any, Component: any, pageProps: AppProps} )
+export default function Buscar({ lista, resposta, img_times, player_images}: { lista : Player[], resposta : any, img_times: any, player_images: any} )
 {
   const [terminado, setTerminado] = useState(false)
   const [replay, setReplay] = useState(false)
@@ -80,7 +80,7 @@ export default function Buscar({ lista, resposta, img_times, player_images, Comp
   }
   
   return(
-    <ThemeProvider attribute='dark'>
+    
     <>
       <input type="search" name={styles.busca} id={styles.busca} placeholder={`Guess ${tentativa} of 8`} autoComplete="off" value={busca} onChange={(e)=>(setBusca(e.target.value))} disabled={terminado || tentativa > 8 ? true : false}/><br/>
 
@@ -136,8 +136,7 @@ export default function Buscar({ lista, resposta, img_times, player_images, Comp
         <button className={styles.button} onClick={() => window.location.reload()}>Play again</button>
       }
     </>
-    <Component {...pageProps} />
-    </ThemeProvider>
+
   )
 
 }
