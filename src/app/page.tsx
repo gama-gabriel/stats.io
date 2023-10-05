@@ -1,35 +1,8 @@
 import styles from './page.module.css'
 import Image from 'next/image'
-import { GetStaticProps } from 'next'
-import ItensLista from '../../components/itensLista'
 import Busca from './components/busca'
-import imagem from '../../public/statsio.png' 
 import icone from './favicon.ico'
-import { ThemeProvider } from 'next-themes'
-import type { AppProps } from 'next/app'
 
-
-type Player = 
-{
-  id: number,
-  PName: string,
-  POS: string,
-  Team: string,
-  Age: number
-  PPG: number,
-  APG: number,
-  RPG: number,
-  SPG: number,
-  BPG: number,
-  [`FG%`]: number,
-  [`3P%`]: number,
-  [`FT%`]: number,
-}
-
-type HomeProps = 
-{
-  dados: Player[]
-}
 
 async function loadData(): Promise<any>
 {
@@ -57,22 +30,7 @@ async function loadData(): Promise<any>
 export default async function Home() 
 {
   const data = await loadData()
-
-  const exemplo = [{PName: "Paul George", id: 1}, {PName: "Terrance Mann", id: 2}]
-
-
-  function criarLinha(lista: object)
-  {
-    const valores = Object.values(lista)
-    return(
-    <div>
-    {valores.map((item) =>
-    (
-        <div key={item.id}>{item}</div>
-    ))}
-    </div>)
-  }
-
+  
   async function escolher()
   {
     "use server"
@@ -83,17 +41,13 @@ export default async function Home()
     return escolhido
   }
 
-
-  return (
-    
+  return (  
     <>
     <div className='fullbody'>
       <div className={styles.header}>
         <h1>Stats.i</h1><Image src={icone} alt='abc' width={55} height={55} className={styles.img}></Image><br />
       </div>
       <Busca lista={data.players} resposta={await escolher()} img_times={data.img_times} player_images={data.player_imgs}></Busca>
-
-      
       
     </div>
 

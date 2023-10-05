@@ -269,7 +269,7 @@
 #help
 {
     animation: fade-in .5s ease-in-out;
-    width: 900px;
+    width: 800px;
     height: fit-content;    
     background-color: rgb(64, 18, 139);
     border-radius: 20px;
@@ -289,7 +289,14 @@
 }
 #help p 
 {
-    margin-block: 20px;
+    margin-block: 30px;
+    width: 650px;
+    margin-inline: auto;
+}
+.reminder
+{
+    font-size: 8pt;
+    margin-bottom: 0px;
 }
 
 .button 
@@ -298,17 +305,17 @@
     width: 120px;
     padding-block: 10px;
     padding-inline: 5px;
-    border: solid 3px rgb(221, 88, 214);
+    border: solid 2px rgb(221, 88, 214);
     color: rgb(255, 231, 155);
     font-weight: 700;
     font-size: 12pt;
-    border-radius: 15px;
+    border-radius: 8px;
     align-items: center;
     justify-content: center;
-    margin-bottom: 21px;
+    margin-bottom: 20px;
     outline: none;
     cursor: pointer;
-    margin-block: 30px;
+    margin-top: 20px;
 }
 
 .button:hover
@@ -322,13 +329,7 @@
     background-color: rgba(221, 88, 214, 0.55);
     box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 4px;
 }
-.reminder
-{
-    font-size: 8pt;
-    margin-block: 0px;
-    margin-top: 20px;
-    margin-bottom: 0px;
-}
+
 .abrirHelp
 {
     text-decoration: underline;

@@ -1,9 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @next/next/no-img-element */
+
 import styles from '../page.module.css'
 
 export default function Tabela({ lista, tentativa, terminou, img_times, dica}: any)
 {
-    
-    
     return(
         <div>
         <table  id={styles.tabela}>

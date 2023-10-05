@@ -6,20 +6,10 @@ import styles from '../page.module.css'
 
 export default function Mensagem( { referencia, tentativa, img_jogadores, resposta, acertou, terminou }: any) 
 {
-    function replay()
-    {
-        window.location.reload()  
-    }
-    
-    function fecharResp()
-    {
-        referencia.current?.close()  
-    }
-    
     return (
     
     <>
-        <dialog ref={referencia}  id={styles.terminou}>
+        <dialog ref={referencia} id={styles.terminou}>
             <div className={styles.fecContainer} onClick={() => referencia.current?.close()}>
                 <div className={styles.close_container}>
                     <div className={styles.leftright}></div>

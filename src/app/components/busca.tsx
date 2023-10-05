@@ -7,8 +7,6 @@ import Linha from './linha'
 import { Player } from '../types/player'
 import Mensagem from './mensagem'
 import { ThemeProvider } from 'next-themes'
-import type { AppProps } from 'next/app'
-
 
 
 export default function Buscar({ lista, resposta, img_times, player_images}: { lista : Player[], resposta : any, img_times: any, player_images: any} )
@@ -36,7 +34,6 @@ export default function Buscar({ lista, resposta, img_times, player_images}: { l
 
   function criarLinha(objeto: object): any
   {
-    // const valores = Object.values(objeto)
     setListaRespostas([...listaRespostas, objeto])
     setMostrarLinha(false)
   }
@@ -109,7 +106,7 @@ export default function Buscar({ lista, resposta, img_times, player_images}: { l
       
       
 
-      <dialog ref={dialogRef} onClose={() => setIsOpen(false)} id={styles.help}>
+      <dialog ref={dialogRef} id={styles.help}>
         
         <h1>How to Play</h1>
 
@@ -129,7 +126,7 @@ export default function Buscar({ lista, resposta, img_times, player_images}: { l
       {(tentativa > 8 && abrirResposta())}
       
         <Mensagem referencia={respostaRef} img_jogadores={player_images} resposta={resposta} tentativa={tentativa}
-        acertou={acertou}></Mensagem>
+        acertou={acertou} onClose={() => setTerminado(false)}></Mensagem>
       
       {
       replay && 
