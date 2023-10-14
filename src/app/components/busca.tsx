@@ -79,47 +79,59 @@ export default function Buscar({ lista, resposta, img_times, player_images}: { l
   return(
     <ThemeProvider attribute='dark'>  
     <>
-      <input type="search" name={styles.busca} id={styles.busca} placeholder={`Guess ${tentativa} of 8`} autoComplete="off" value={busca} onChange={(e)=>(setBusca(e.target.value))} disabled={terminado || tentativa > 8 ? true : false}/><br/>
+      <input type="search" className='teste h-13 w-72 p-3 bg-pink/25 border border-pink outline-none focus:border-2' placeholder={`Guess ${tentativa} of 8`} autoComplete="off" value={busca} onChange={(e)=>(setBusca(e.target.value))} disabled={terminado || tentativa > 8 ? true : false}/><br/>
 
-      <ul id={styles.resultados}>
+      <ul className='flex-col h-52 m-auto w-fit overflow-auto scrollbar'>
       {busca != '' && playersList.filter((item) =>
           item = item.PName.toLowerCase().includes(busca.toLowerCase())  
       ).map((item)=> (
-          <li onClick={() => handleClick(item)} key={item.id}>{item.PName}</li> ) 
+          <li onClick={() => handleClick(item)} className='h-min py-1 w-64 border-b-2 border-pink p-auto cursor-pointer hover:bg-pink/25' key={item.id}>{item.PName}</li> ) 
       )}
       </ul>
-      
-      <p className={styles.subtitulo}>Which player averaged these stats during the 22-23 regular season?</p>
-      <p onClick={abrir} className={styles.abrirHelp}>How to play</p>
+  
+      <p className="text-white-100 h-auto text-base sm:w-auto w-80 mx-auto my-5 font-bold">Which player averaged these stats during the 22-23 regular season?</p>
+{
+ /*     <div className=" hover:cursor-pointer relative mx-auto w-40 h-40 group">
+  
+  <div className=" h-1 w-7 absolute mt-24 ml-5 bg-white-100 rounded-md transform rotate-45 transition-transform duration-300 ease-in group-hover:rotate-[-45deg] group-hover:bg-red"></div>
+  <div className=" h-1 w-7 absolute mt-24 ml-5 bg-white-100 rounded-md transform -rotate-45 transition-transform duration-300 ease-in group-hover:rotate-[45deg] group-hover:bg-red"></div>
+  <div className="text-white-100 text-xs uppercase transition-opacity opacity-0 mx-auto mt-3 px-1 text-center hover:opacity-100 ">Close</div>
+</div>
+<div className="flex items-center justify-center w-40 h-40 absolute right-0 mt-10 mr-16 group-hover:text-red-300"></div>*/
+}
+      <p onClick={abrir} className='text-white-100 mx-auto h-5 mb-6 w-fit text-sm font-bold underline cursor-pointer hover:text-base'>How to play</p>
 
-      <Tabela lista={resposta} tentativa={tentativa} terminou={acertou} img_times={img_times}></Tabela>
+      <div className='block w-[90%] mx-auto overflow-hidden overflow-x-auto'>
+        <Tabela lista={resposta} tentativa={tentativa} terminou={acertou} img_times={img_times}></Tabela>
 
-      <table className={styles.respostas}>
-        <tbody>
-          {mostrarLinha &&  criarLinha(selectedPlayer)}
-          <Linha key={tentativa} lista={listaRespostas} resposta={resposta} tentativa={tentativa - 1} terminou={terminado} img_times={img_times}></Linha>
-        </tbody>
-      </table>
-
-      <p>{resposta.PName}</p>
+        <table className=' mx-auto text-purple-900 text-sm font-bold min-w-max opacity-100'>
+          <tbody>
+            {mostrarLinha &&  criarLinha(selectedPlayer)}
+            <Linha key={tentativa} lista={listaRespostas} resposta={resposta} tentativa={tentativa - 1} terminou={terminado} img_times={img_times}></Linha>
+          </tbody>
+        </table>
+      </div>
+      <p className='mt-4'>{resposta.PName}</p>
       
       
       
 
-      <dialog ref={dialogRef} id={styles.help}>
+      <dialog ref={dialogRef} className='w-[90%] sm:w-fit rounded-xl bg-purple-500 py-4 px-4 sm:px-6 md:px-8 lg:px-10 drop-shadow-2xl text-white-100 font-bold'>
         
-        <h1>How to Play</h1>
+        <h1 className='text-2xl sm:text-3xl text-white-100 p-2'>How to Play</h1>
 
-        <p>Guess which player averaged the stats highlighted in yellow. You'll have 8 attempts!</p>
+        <p className='text-sm sm:text-base pt-4 pb-6 w-[90%] mx-auto'>Guess which player averaged the stats highlighted in yellow. You'll have 8 attempts!</p>
 
+        <div className='block w-[100%] mx-auto overflow-hidden overflow-x-auto scale-90'>
         <Tabela lista={resposta} tentativa={tentativa} terminou={terminado} img_times={img_times}></Tabela>
+        </div>
 
-        <p>With every wrong attempt you have, another stat will be revealed.</p>
-        <p>You may get other tips if you get anything that matches the answer. They will be highlighted in
+        <p className='text-sm sm:text-base pt-6 w-[90%] mx-auto'>With every wrong attempt you have, another stat will be revealed.</p>
+        <p className='text-sm sm:text-base p-3 w-[90%] mx-auto'>You may get other tips if you get anything that matches the answer. They will be highlighted in
           <span style={{color:'#a5fa97'}}>&nbsp;green</span>
         .</p>
-        <p className={styles.reminder}>*Player needs to have played at least 100 minutes to qualify</p>
-        <button className={styles.button} onClick={fechar}>Got it!</button>
+        <p className="text-[9px] sm:text-xs p-2">*Player needs to have played at least 100 minutes to qualify</p>
+        <button className='border-2 border-pink px-4 py-3 bg-pink/20 text-white-100 font-bold outline-none mt-4 rounded-md hover:bg-pink/30 active:bg-pink/60' onClick={fechar}>Got it!</button>
       </dialog>
       
       {terminado && abrirResposta()}
@@ -130,7 +142,7 @@ export default function Buscar({ lista, resposta, img_times, player_images}: { l
       
       {
       replay && 
-        <button className={styles.button} onClick={() => window.location.reload()}>Play again</button>
+        <button className='border-2 border-pink px-4 py-2 bg-pink/20 text-white-100 font-bold outline-none mt-4 mb-2 rounded-md hover:bg-pink/30 active:bg-pink/60' onClick={() => window.location.reload()}>Play again</button>
       }
     </>
     </ThemeProvider>

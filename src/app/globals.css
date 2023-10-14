@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
   
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body
 {
   font-family: 'Montserrat', sans-serif;
   background-color: rgb(64, 18, 139);
   color: rgb(255, 231, 155);
   font-size: 12pt;
-  min-height: 100vh;
-  margin: 0px;
   align-items: center;
   text-align: center;  
 }
@@ -27,6 +29,27 @@ p
 {
   height: min-content
 }
+
+@layer utilities
+{
+.scrollbar::-webkit-scrollbar
+{
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 12px;
+}
+.scrollbar::-webkit-scrollbar-thumb
+{
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+}
+.teste::placeholder
+{
+  color: rgba(253, 242, 210, 0.5);
+  font-family: 'Montserrat', sans-serif;
+  opacity: 1; 
+}
+}
+
 
 dialog::backdrop
 {

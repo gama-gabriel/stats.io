@@ -1,49 +1,60 @@
 import styles from '../page.module.css'
+import classNames from 'classnames'
 
 export default function Linha({lista, resposta, tentativa, img_times, terminou}: any)
 {
+    
+    const cell:string = 'border-b-2 border-x-2 border-purple-900 text-sm py-1'
+    
+    const nome:string = 'w-40'
+    const stats:string = 'w-12 sm:w-16'
+    const team:string = ' h-16 w-16'
+    const certo:string = 'bg-green'
+    const normal:string = 'bg-white-300'    
     
     return(
     <>
     {
         lista.map((jogador: any, index: number) =>
         (
-        <tr key={index} className={index == (tentativa - 1) ? styles.fade_in : ''}>
+
+
+        <tr key={index} className={classNames(index == (tentativa - 1) ? 'animate-fade-in' : '')}>
             <td 
-                className={resposta.PName === jogador.PName ? `${styles.nome} ${styles.acertou}` : styles.nome}>{jogador.PName}</td>
+                className={classNames(cell, nome, resposta.PName === jogador.PName? certo : normal)}>{jogador.PName}</td>
             <td 
-                className={resposta.PPG === jogador.PPG ? `${styles.stats} ${styles.acertou}` : styles.stats}>{jogador.PPG}
+                className={classNames(cell, stats, resposta.PPG === jogador.PPG? certo : normal)}>{jogador.PPG}
             </td>
             <td 
-                className={resposta["FG%"] === jogador["FG%"] ? `${styles.stats} ${styles.acertou}` : styles.stats}>{jogador["FG%"]}
+                className={classNames(cell, stats, resposta["FG%"] === jogador["FG%"]? certo : normal)}>{jogador["FG%"]}
             </td>
             <td 
-                className={resposta["3P%"] === jogador["3P%"] ? `${styles.stats} ${styles.acertou}` : styles.stats}> {jogador["3P%"]}
+                className={classNames(cell, stats, resposta["3P%"] === jogador["3P%"]? certo : normal)}>{jogador["3P%"]}
             </td>
             <td 
-                className={resposta["FT%"] === jogador["FT%"] ? `${styles.stats} ${styles.acertou}` : styles.stats}>{jogador["FT%"]}
+                className={classNames(cell, stats, resposta["FT%"] === jogador["FT%"]? certo : normal)}>{jogador["FT%"]}
             </td>
             <td 
-                className={resposta.RPG === jogador.RPG ? `${styles.stats} ${styles.acertou}` : styles.stats}>{jogador.RPG}
+                className={classNames(cell, stats, resposta.RPG === jogador.RPG? certo : normal)}>{jogador.RPG}
             </td>
             <td 
-                className={resposta.APG === jogador.APG ? `${styles.stats} ${styles.acertou}` : styles.stats}>{jogador.APG}
+                className={classNames(cell, stats, resposta.APG === jogador.APG? certo : normal)}>{jogador.APG}
             </td>
             <td 
-                className={resposta.POS === jogador.POS ? `${styles.stats} ${styles.acertou}` : styles.stats}>{jogador.POS
+                className={classNames(cell, stats, resposta.POS === jogador.POS? certo : normal)}>{jogador.POS
             }</td>
             <td 
-                className={resposta.Team === jogador.Team ? `${styles.teams} ${styles.acertou}` : styles.teams}>
-                <img src={img_times.find((item: any) => item.TName == jogador.Team).team_img} alt="Team" />
+                className={classNames(cell, team, resposta.Team === jogador.Team? certo : normal)}>
+                <img className='w-10 h-10 mx-auto' src={img_times.find((item: any) => item.TName == jogador.Team).team_img} alt={jogador.Team}/>
                 {jogador.Team}
             </td>
             <td 
-                className={resposta.Age === jogador.Age ? `${styles.stats} ${styles.acertou}` : styles.stats}>{jogador.Age}</td>
+                className={classNames(cell, stats, resposta.Age === jogador.Age? certo : normal)}>{jogador.Age}</td>
             <td 
-                className={resposta.BPG === jogador.BPG ? `${styles.stats} ${styles.acertou}` : styles.stats}>{jogador.BPG}
+                className={classNames(cell, stats, resposta.BPG === jogador.BPG? certo : normal)}>{jogador.BPG}
             </td>
             <td 
-                className={resposta.SPG === jogador.SPG ? `${styles.stats} ${styles.acertou}` : styles.stats}>{jogador.SPG}
+                className={classNames(cell, stats, resposta.SPG === jogador.SPG? certo : normal)}>{jogador.SPG}
             </td>
         </tr>))
     }

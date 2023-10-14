@@ -43,15 +43,16 @@ export default async function Home()
 
   return (  
     <>
-    <div className='fullbody'>
-      <div className={styles.header}>
-        <h1>Stats.i</h1><Image src={icone} alt='abc' width={55} height={55} className={styles.img}></Image><br />
+    <div className='w-full h-full mx-auto '>
+      <div className='flex justify-center my-16 w-full mx-auto'>
+        <h1 className='text-4xl text-white-100 w-min my-auto font-bold tracking-wide'>Stats.i</h1><Image src={icone} alt='abc' width={55} height={55} className={styles.img}></Image><br />
       </div>
       <Busca lista={data.players} resposta={await escolher()} img_times={data.img_times} player_images={data.player_imgs}></Busca>
       
     </div>
 
-    <footer className={styles.footer}>made by: Gabriel Gama</footer>  
+    <footer className='mx-auto text-sm font-bold mb-2 mt-3'>Made by: Gabriel Gama - <a href="https://github.com/gama-gabriel" target="_blank" className='underline'>GitHub profile</a>
+    </footer>
     </>
 
   )

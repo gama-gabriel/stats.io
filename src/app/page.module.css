@@ -96,11 +96,7 @@
     border: solid 3px rgb(221, 88, 214);
     outline: none;
 }
-#busca::placeholder 
-{ 
-    color: rgba(253, 242, 210, 0.5);
-    opacity: 1; /* Firefox */
-}
+
 #resultados
 {
     display: flex;
@@ -113,16 +109,6 @@
     align-items: center;
     overflow: auto;   
 
-}
-#resultados::-webkit-scrollbar
-{
-    background-color: rgba(0, 0, 0, 0.1);
-    width: 10px;
-}
-#resultados::-webkit-scrollbar-thumb
-{
-  background-color: rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
 }
 
 #resultados li
@@ -148,55 +134,7 @@
     padding-block: 20px;
     margin-block: 0px;
 }
-#tabela 
-{
-    border-collapse: collapse;
-    font-size: 10pt;
-    padding: 8px;
-    animation: load 1.5s ease-in-out;
-    margin: auto;
-}
 
-#tabela td 
-{
-    border-bottom: solid 2px rgb(37, 7, 36);
-    border-left: solid 2px rgb(37, 7, 36);
-    border-right: solid 2px rgb(37, 7, 36);
-    min-width: 50px;
-}
-.nome
-{
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    min-width: 150px;
-    max-width: 150px;
-    height: 50px;
-    margin: 0px;
-}
-.stats
-{
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 50px;
-    margin: 0px;
-    padding-block: 5px;
-}
-.teams
-{
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 50px;
-    margin: 0px;
-    padding-block: 5px;
-}
-.teams img
-{
-    height: 40px;
-    width: 40px;
-}
 .time
 {
     align-items: center;
@@ -213,13 +151,7 @@
     margin: 0px;
     font-size: 10pt;
 }
-#tabela th
-{
-    background-color: rgb(99, 0, 112);
-    color: rgb(255, 231, 155);
-    border: solid 2px rgb(37, 7, 36);
-    height: 40px;
-}
+
 #tips
 {
     background-color: rgb(237,221,78);
@@ -395,7 +327,7 @@
   width: 30px;
   position: absolute;
   margin-top: 24px;
-  margin-left: 5px;
+  margin-left: 15px;
   background-color: rgb(255, 231, 155);
   border-radius: 2px;
   transform: rotate(45deg);
@@ -409,7 +341,7 @@
     width: 30px;
     position: absolute;
     margin-top: 24px;
-    margin-left: 5px;
+    margin-left: 15px;
     background-color: rgb(255, 231, 155);
     border-radius: 2px;
     transform: rotate(-45deg);
