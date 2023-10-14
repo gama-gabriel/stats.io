@@ -9,7 +9,7 @@ import icone from './favicon.ico'
 async function loadData(): Promise<any>
 {
   'use server'
-  const resposta = await fetch("https://nba-players-api-alpha.vercel.app/players")
+  const resposta = await fetch("https://nba-players-api-alpha.vercel.app/players", { cache: 'no-store' })
   const players = await resposta.json()
 
   const resp_igm_times = await fetch("https://nba-players-api-alpha.vercel.app/teams")
