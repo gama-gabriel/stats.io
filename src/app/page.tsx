@@ -33,7 +33,6 @@ export default async function Home()
   
   async function escolher()
   {
-    "use server"
     const n = Math.floor(Math.random() * (468)) + 1
     console.log(n)
     const data = await loadData()
@@ -43,7 +42,7 @@ export default async function Home()
 
   return (  
     <>
-    <div className='w-full h-full mx-auto ' onLoad={await escolher}>
+    <div className='w-full h-full mx-auto '>
       <div className='flex justify-center my-16 w-full mx-auto'>
         <h1 className='text-4xl text-white-100 w-min my-auto font-bold tracking-wide'>Stats.i</h1><Image src={icone} alt='abc' width={55} height={55} className={styles.img}></Image><br />
       </div>
