@@ -9,7 +9,7 @@ import Mensagem from './mensagem'
 import { ThemeProvider } from 'next-themes'
 
 
-export default function Buscar({ lista, resposta, img_times, player_images}: { lista : Player[], resposta : any, img_times: any, player_images: any} )
+export default function Buscar({ lista, resposta, img_times, numero, player_images}: { lista : Player[], resposta : any, img_times: any, numero: any, player_images: any} )
 {
   const [terminado, setTerminado] = useState(false)
   const [replay, setReplay] = useState(false)
@@ -30,6 +30,7 @@ export default function Buscar({ lista, resposta, img_times, player_images}: { l
   if (playersList.length === 0) 
   {
     setPlayersList(lista)
+    
   }
 
   function criarLinha(objeto: object): any
@@ -79,6 +80,7 @@ export default function Buscar({ lista, resposta, img_times, player_images}: { l
   return(
     <ThemeProvider attribute='dark'>  
     <>
+      <p>{numero}</p>
       <input type="search" className='teste h-13 w-72 p-3 bg-pink/25 border border-pink outline-none focus:border-2' placeholder={`Guess ${tentativa} of 8`} autoComplete="off" value={busca} onChange={(e)=>(setBusca(e.target.value))} disabled={terminado || tentativa > 8 ? true : false}/><br/>
 
       <ul className='flex-col h-52 m-auto w-fit overflow-auto scrollbar'>
