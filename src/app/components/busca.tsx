@@ -64,6 +64,13 @@ export default function Buscar({ lista, resposta, img_times, numero, player_imag
   {
     dialogRef.current?.close()
   }
+  const clicarFora = (e:any) => 
+    {
+        if (e.target === e.currentTarget) 
+        {
+          fechar()
+        }
+    }
 
   function abrirResposta()
   {
@@ -75,6 +82,7 @@ export default function Buscar({ lista, resposta, img_times, numero, player_imag
     }
     respostaRef.current?.showModal()  
     setTerminado(false)
+    document.body.classList.add('overflow-hidden')
   }
   
   return(
@@ -118,22 +126,23 @@ export default function Buscar({ lista, resposta, img_times, numero, player_imag
       
       
 
-      <dialog ref={dialogRef} className='w-[90%] sm:w-fit rounded-xl bg-purple-500 py-4 px-4 sm:px-6 md:px-8 lg:px-10 drop-shadow-2xl text-white-100 font-bold'>
-        
-        <h1 className='text-2xl sm:text-3xl text-white-100 p-2'>How to Play</h1>
+      <dialog ref={dialogRef} className='w-[90%] sm:w-fit rounded-xl bg-purple-500 py-4 px-4 sm:px-6 md:px-2 lg:px-2 drop-shadow-2xl text-white-100 font-bold' onClick={clicarFora}>
+        <div className='p-0'>
+          <h1 className='text-2xl sm:text-3xl text-white-100 p-2'>How to Play</h1>
 
-        <p className='text-sm sm:text-base pt-4 pb-6 w-[90%] mx-auto'>Guess which player averaged the stats highlighted in yellow. You'll have 8 attempts!</p>
+          <p className='text-sm sm:text-base pt-4 pb-6 w-[90%] mx-auto'>Guess which player averaged the stats highlighted in yellow. You'll have 8 attempts!</p>
 
-        <div className='block w-[100%] mx-auto overflow-hidden overflow-x-auto scale-90'>
-        <Tabela lista={resposta} tentativa={tentativa} terminou={terminado} img_times={img_times}></Tabela>
+          <div className='block w-[100%] mx-auto overflow-hidden overflow-x-auto scale-90'>
+          <Tabela lista={resposta} tentativa={tentativa} terminou={terminado} img_times={img_times}></Tabela>
+          </div>
+
+          <p className='text-sm sm:text-base pt-6 w-[90%] mx-auto'>With every wrong attempt you have, another stat will be revealed.</p>
+          <p className='text-sm sm:text-base p-3 w-[90%] mx-auto'>You may get other tips if you get anything that matches the answer. They will be highlighted in
+            <span style={{color:'#a5fa97'}}>&nbsp;green</span>
+          .</p>
+          <p className="text-[9px] sm:text-xs p-2">*Player needs to have played at least 100 minutes to qualify</p>
+          <button className='border-2 border-pink px-4 py-3 bg-pink/20 text-white-100 font-bold outline-none mt-4 rounded-md hover:bg-pink/30 active:bg-pink/60' onClick={fechar}>Got it!</button>
         </div>
-
-        <p className='text-sm sm:text-base pt-6 w-[90%] mx-auto'>With every wrong attempt you have, another stat will be revealed.</p>
-        <p className='text-sm sm:text-base p-3 w-[90%] mx-auto'>You may get other tips if you get anything that matches the answer. They will be highlighted in
-          <span style={{color:'#a5fa97'}}>&nbsp;green</span>
-        .</p>
-        <p className="text-[9px] sm:text-xs p-2">*Player needs to have played at least 100 minutes to qualify</p>
-        <button className='border-2 border-pink px-4 py-3 bg-pink/20 text-white-100 font-bold outline-none mt-4 rounded-md hover:bg-pink/30 active:bg-pink/60' onClick={fechar}>Got it!</button>
       </dialog>
       
       {terminado && abrirResposta()}
@@ -141,11 +150,16 @@ export default function Buscar({ lista, resposta, img_times, numero, player_imag
       
         <Mensagem referencia={respostaRef} img_jogadores={player_images} resposta={resposta} tentativa={tentativa}
         acertou={acertou} onClose={() => setTerminado(false)}></Mensagem>
+        
       
       {
       replay && 
         <button className='border-2 border-pink px-4 py-2 bg-pink/20 text-white-100 font-bold outline-none mt-4 mb-2 rounded-md hover:bg-pink/30 active:bg-pink/60' onClick={() => window.location.reload()}>Play again</button>
       }
+      {replay &&
+        <p className='text-sm cursor-pointer font-bold underline' onClick={abrirResposta}>Show answer</p>
+      }
+
     </>
     </ThemeProvider>
   )
