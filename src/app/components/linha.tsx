@@ -1,4 +1,3 @@
-import styles from '../page.module.css'
 import classNames from 'classnames'
 
 export default function Linha({lista, resposta, tentativa, img_times, terminou}: any)
@@ -17,44 +16,54 @@ export default function Linha({lista, resposta, tentativa, img_times, terminou}:
     {
         lista.map((jogador: any, index: number) =>
         (
-
-
         <tr key={index} className={classNames(index == (tentativa - 1) ? 'animate-fade-in' : '')}>
-            <td 
-                className={classNames(cell, nome, resposta.PName === jogador.PName? certo : normal)}>{jogador.PName}</td>
-            <td 
-                className={classNames(cell, stats, resposta.PPG === jogador.PPG? certo : normal)}>{jogador.PPG}
+            <td className={classNames(cell, nome, resposta.PName === jogador.PName? certo : normal)}
+                >{jogador.PName}
             </td>
-            <td 
-                className={classNames(cell, stats, resposta["FG%"] === jogador["FG%"]? certo : normal)}>{jogador["FG%"]}
+
+            <td className={classNames(cell, stats, resposta.PPG === jogador.PPG? certo : normal)}
+                >{jogador.PPG}
             </td>
-            <td 
-                className={classNames(cell, stats, resposta["3P%"] === jogador["3P%"]? certo : normal)}>{jogador["3P%"]}
+
+            <td className={classNames(cell, stats, resposta["FG%"] === jogador["FG%"]? certo : normal)}
+                >{jogador["FG%"]}
             </td>
-            <td 
-                className={classNames(cell, stats, resposta["FT%"] === jogador["FT%"]? certo : normal)}>{jogador["FT%"]}
+
+            <td className={classNames(cell, stats, resposta["3P%"] === jogador["3P%"]? certo : normal)}
+                >{jogador["3P%"]}
             </td>
-            <td 
-                className={classNames(cell, stats, resposta.RPG === jogador.RPG? certo : normal)}>{jogador.RPG}
+
+            <td className={classNames(cell, stats, resposta["FT%"] === jogador["FT%"]? certo : normal)}
+                >{jogador["FT%"]}
             </td>
-            <td 
-                className={classNames(cell, stats, resposta.APG === jogador.APG? certo : normal)}>{jogador.APG}
+
+            <td className={classNames(cell, stats, resposta.RPG === jogador.RPG? certo : normal)}
+                >{jogador.RPG}
             </td>
-            <td 
-                className={classNames(cell, stats, resposta.POS === jogador.POS? certo : normal)}>{jogador.POS
-            }</td>
-            <td 
-                className={classNames(cell, team, resposta.Team === jogador.Team? certo : normal)}>
+
+            <td className={classNames(cell, stats, resposta.APG === jogador.APG? certo : normal)}
+                >{jogador.APG}
+            </td>
+
+            <td className={classNames(cell, stats, resposta.POS === jogador.POS? certo : normal)} 
+                >{jogador.POS}
+            </td>
+            
+            <td className={classNames(cell, team, resposta.Team === jogador.Team? certo : normal)}>
                 <img className='w-10 h-10 mx-auto' src={img_times.find((item: any) => item.TName == jogador.Team).team_img} alt={jogador.Team}/>
                 {jogador.Team}
             </td>
-            <td 
-                className={classNames(cell, stats, resposta.Age === jogador.Age? certo : normal)}>{jogador.Age}</td>
-            <td 
-                className={classNames(cell, stats, resposta.BPG === jogador.BPG? certo : normal)}>{jogador.BPG}
+
+            <td className={classNames(cell, stats, resposta.Age === jogador.Age? certo : normal)}>
+                {jogador.Age}
             </td>
-            <td 
-                className={classNames(cell, stats, resposta.SPG === jogador.SPG? certo : normal)}>{jogador.SPG}
+
+            <td className={classNames(cell, stats, resposta.BPG === jogador.BPG? certo : normal)}
+                >{jogador.BPG}
+            </td>
+
+            <td className={classNames(cell, stats, resposta.SPG === jogador.SPG? certo : normal)}
+                >{jogador.SPG}
             </td>
         </tr>))
     }

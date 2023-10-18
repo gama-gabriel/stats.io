@@ -1,8 +1,5 @@
-
-
-import styles from './page.module.css'
 import Image from 'next/image'
-import Busca from './components/busca'
+import Conteudo from './components/conteudo'
 import icone from './favicon.ico'
 
 
@@ -42,18 +39,19 @@ export default async function Home()
     console.log(n)
     const data = await loadData()
     const escolhido = data.players.find((jogador: any) => jogador.id === n)
+    console.log(escolhido.PName)
     return escolhido
   }
 
   const escolhido = await escolher()
-  const numero = (Math.floor(Math.random() * (468)) + 1)
+  
   return (  
     <>
     <div className='w-full h-full mx-auto '>
       <div className='flex justify-center my-16 w-full mx-auto'>
-        <h1 className='text-4xl text-white-100 w-min my-auto font-bold tracking-wide'>Stats.i</h1><Image src={icone} alt='abc' width={55} height={55} className={styles.img}></Image><br />
+        <h1 className='text-4xl text-white-100 w-min my-auto font-bold tracking-wide'>Stats.i</h1><Image src={icone} alt='abc' width={55} height={55} className='-ml-2 animate-bounce'></Image><br />
       </div>
-      <Busca lista={data.players} resposta={escolhido} img_times={data.img_times} numero={numero} player_images={data.player_imgs}></Busca>
+      <Conteudo lista={data.players} resposta={escolhido} img_times={data.img_times} player_images={data.player_imgs}></Conteudo>
       
     </div>
 

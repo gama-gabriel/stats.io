@@ -11,15 +11,22 @@ module.exports = {
     {      
       keyframes: 
       {
-      fading: 
+        fading: 
         {
-        '0%': {opacity: 0},
-        '100%': {opacity:  1},
+          '0%': {opacity: 0},
+          '100%': {opacity:  1},
         },
+        bouncing:
+        {
+          '0%': {transform: 'translateY(0px)'},
+          '100%': {transform: 'translateY(15px)'}
+        }
       },
+
       animation: 
       {
-      'fade-in': 'fading 1s ease-in-out',
+        'fade-in': 'fading 1s ease-in-out',        
+        'bounce': 'bouncing .3s ease-in 5 alternate-reverse'
       },
     },
     colors:

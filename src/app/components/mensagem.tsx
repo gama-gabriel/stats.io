@@ -2,14 +2,12 @@
 /* eslint-disable @next/next/no-img-element */
 
 import styles from '../page.module.css'
-import { useEffect } from 'react'
 
 export default function Mensagem( { referencia, tentativa, img_jogadores, resposta, acertou, terminou }: any) 
 {
     function fechar()
     {
         referencia.current?.close()
-        document.body.classList.remove('overflow-hidden')
     }
     const clicarFora = (e:any) => 
     {
@@ -18,13 +16,7 @@ export default function Mensagem( { referencia, tentativa, img_jogadores, respos
           fechar()
         }
     }
-    const handleEscapeKeyPress = (e:any) => {
-        if (e.key === 'Escape') {
-          fechar()
-        }
-      }
 
-      
 
     return (
     <>
@@ -36,7 +28,7 @@ export default function Mensagem( { referencia, tentativa, img_jogadores, respos
                 {acertou &&
                 <svg 
                 className={styles.checkmark}
-                viewBox="0 0 52 52">
+                viewBox="0 0 52 52" width={56} height={56}>
                     <circle 
                     className={styles.checkmark__circle} 
                     cx="26" cy="26" r="25" fill="none"/>
@@ -57,7 +49,8 @@ export default function Mensagem( { referencia, tentativa, img_jogadores, respos
                 </svg>
                 }
                 <div className="hover:cursor-pointer ml-auto me-4 mt-2 w-fit h-fit group scale-75 md:scale-100 col-2" onClick={fechar}>
-                    <div className=" h-1 w-7 absolute mt-4 ml-3 md:bg-white-100 bg-red rounded-md transform rotate-45 transition-transform duration-300 ease-in group-hover:rotate-[-45deg] group-hover:bg-red"></div>
+                    <div className=" h-1 w-7 absolute mt-4 ml-3 md:bg-white-100 bg-red rounded-md transform rotate-45 transition-transform duration-300 ease-in group-hover:rotate-[-45deg] group-hover:bg-red">
+                    </div>
                     <div className=" h-1 w-7 absolute mt-4 ml-3 md:bg-white-100 bg-red rounded-md transform -rotate-45 transition-transform duration-300 ease-in group-hover:rotate-[45deg] group-hover:bg-red"></div>
                     
                     <div className="pt-5 text-white-100 text-xs uppercase transition-opacity opacity-100 md:opacity-0  mx-auto mt-3 px-1 text-center group-hover:opacity-100">Close</div>
@@ -65,16 +58,12 @@ export default function Mensagem( { referencia, tentativa, img_jogadores, respos
 
             </div>
             {acertou &&
-            <p 
-                className='text-green w-[90%] text-base font-bold mx-auto pt-3'
+            <p className='text-green w-[90%] text-base font-bold mx-auto pt-3'
             >Congratulations! You guessed the right player in {tentativa} attempt(s)</p>
             }
 
-            
-            
             {!acertou &&
-            <p 
-                className='text-red w-[90%] text-base font-bold mx-auto pt-3'
+            <p className='text-red w-[90%] text-base font-bold mx-auto pt-3'
             >Almost! You'll get it next time!</p>
             }
 
@@ -84,13 +73,10 @@ export default function Mensagem( { referencia, tentativa, img_jogadores, respos
                 alt={"Player Image"}>
             </img>
 
-            <p 
-                className='text-white-100 w-[90%] text-base font-bold mx-auto pt-1'
+            <p className='text-white-100 w-[90%] text-base font-bold mx-auto pt-1'
             >Answer: {resposta.PName}</p>
             
-            <button 
-                className='border-2 border-pink px-4 py-2 bg-pink/20 text-white-100 font-bold outline-none mt-4 mb-2 rounded-md hover:bg-pink/30 active:bg-pink/60' 
-                onClick={() => window.location.reload()}
+            <button className='border-2 border-pink px-4 py-2 bg-pink/20 text-white-100 font-bold outline-none mt-4 mb-2 rounded-md hover:bg-pink/30 active:bg-pink/60' onClick={() => window.location.reload()}
             >Play again</button>
         </div>
         </dialog>

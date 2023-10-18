@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client"
 import { useState, useRef, useEffect } from 'react'
-import styles from '../page.module.css'
 import Tabela from './tabela'
 import Linha from './linha'
 import { Player } from '../types/player'
@@ -9,7 +8,7 @@ import Mensagem from './mensagem'
 import { ThemeProvider } from 'next-themes'
 
 
-export default function Buscar({ lista, resposta, img_times, numero, player_images}: { lista : Player[], resposta : any, img_times: any, numero: any, player_images: any} )
+export default function Conteudo({lista, resposta, img_times,  player_images}: { lista : Player[], resposta : any, img_times: any,  player_images: any})
 {
   const [terminado, setTerminado] = useState(false)
   const [replay, setReplay] = useState(false)
@@ -82,60 +81,78 @@ export default function Buscar({ lista, resposta, img_times, numero, player_imag
     }
     respostaRef.current?.showModal()  
     setTerminado(false)
-    document.body.classList.add('overflow-hidden')
+    
   }
   
   return(
     <ThemeProvider attribute='dark'>  
     <>
-      <p>{numero}</p>
-      <input type="search" className='teste h-13 w-72 p-3 bg-pink/25 border border-pink outline-none focus:border-2' placeholder={`Guess ${tentativa} of 8`} autoComplete="off" value={busca} onChange={(e)=>(setBusca(e.target.value))} disabled={terminado || tentativa > 8 ? true : false}/><br/>
+      <input 
+        type="search" 
+        className='teste h-13 w-72 p-3 bg-pink/25 border border-pink outline-none focus:border-2' 
+        placeholder={`Guess ${tentativa} of 8`} 
+        autoComplete="off" 
+        value={busca} 
+        onChange={(e)=>(setBusca(e.target.value))} 
+        disabled={acertou || tentativa > 8 ? true : false}
+      />
+      <br/>
 
       <ul className='flex-col h-52 m-auto w-fit overflow-auto scrollbar'>
-      {busca != '' && playersList.filter((item) =>
-          item = item.PName.toLowerCase().includes(busca.toLowerCase())  
-      ).map((item)=> (
-          <li onClick={() => handleClick(item)} className='h-min py-1 w-64 border-b-2 border-pink p-auto cursor-pointer hover:bg-pink/25' key={item.id}>{item.PName}</li> ) 
-      )}
+      {busca != '' && playersList.filter(
+        (item) =>
+          item = item.PName.toLowerCase().includes(busca.toLowerCase()))
+          .map((filtrado)=> (
+            <li 
+              onClick={() => handleClick(filtrado)} 
+              className='h-min py-1 w-64 border-b-2 border-pink p-auto cursor-pointer hover:bg-pink/25' 
+              key={filtrado.id}>{filtrado.PName}
+            </li>))
+      }
       </ul>
   
       <p className="text-white-100 h-auto text-base sm:w-auto w-80 mx-auto my-5 font-bold">Which player averaged these stats during the 22-23 regular season?</p>
-{
- /*     <div className=" hover:cursor-pointer relative mx-auto w-40 h-40 group">
-  
-  <div className=" h-1 w-7 absolute mt-24 ml-5 bg-white-100 rounded-md transform rotate-45 transition-transform duration-300 ease-in group-hover:rotate-[-45deg] group-hover:bg-red"></div>
-  <div className=" h-1 w-7 absolute mt-24 ml-5 bg-white-100 rounded-md transform -rotate-45 transition-transform duration-300 ease-in group-hover:rotate-[45deg] group-hover:bg-red"></div>
-  <div className="text-white-100 text-xs uppercase transition-opacity opacity-0 mx-auto mt-3 px-1 text-center hover:opacity-100 ">Close</div>
-</div>
-<div className="flex items-center justify-center w-40 h-40 absolute right-0 mt-10 mr-16 group-hover:text-red-300"></div>*/
-}
+
       <p onClick={abrir} className='text-white-100 mx-auto h-5 mb-6 w-fit text-sm font-bold underline cursor-pointer hover:text-base'>How to play</p>
 
       <div className='block w-[90%] mx-auto overflow-hidden overflow-x-auto'>
-        <Tabela lista={resposta} tentativa={tentativa} terminou={acertou} img_times={img_times}></Tabela>
+        <Tabela 
+          lista={resposta} 
+          tentativa={tentativa}  
+          terminou={acertou} 
+          img_times={img_times}>
+        </Tabela>
 
-        <table className=' mx-auto text-purple-900 text-sm font-bold min-w-max opacity-100'>
+        <table className=' mx-auto mb-8 text-purple-900 text-sm font-bold min-w-max opacity-100'>
           <tbody>
             {mostrarLinha &&  criarLinha(selectedPlayer)}
-            <Linha key={tentativa} lista={listaRespostas} resposta={resposta} tentativa={tentativa - 1} terminou={terminado} img_times={img_times}></Linha>
+            <Linha 
+              key={tentativa}  
+              lista={listaRespostas}
+              resposta={resposta}
+              tentativa={tentativa - 1}
+              terminou={terminado}
+              img_times={img_times}>
+            </Linha>
           </tbody>
         </table>
       </div>
-      <p className='mt-4'>{resposta.PName}</p>
       
       
-      
+      {/*help dialog*/}
 
-      <dialog ref={dialogRef} className='w-[90%] sm:w-fit rounded-xl bg-purple-500 py-4 px-4 sm:px-6 md:px-2 lg:px-2 drop-shadow-2xl text-white-100 font-bold' onClick={clicarFora}>
+      <dialog 
+        ref={dialogRef}
+        className='w-[90%] sm:w-fit rounded-xl bg-purple-500 py-4 px-4 sm:px-6 md:px-2 lg:px-2 drop-shadow-2xl text-white-100 font-bold'
+        onClick={clicarFora}
+      >
+
         <div className='p-0'>
           <h1 className='text-2xl sm:text-3xl text-white-100 p-2'>How to Play</h1>
-
           <p className='text-sm sm:text-base pt-4 pb-6 w-[90%] mx-auto'>Guess which player averaged the stats highlighted in yellow. You'll have 8 attempts!</p>
-
           <div className='block w-[100%] mx-auto overflow-hidden overflow-x-auto scale-90'>
           <Tabela lista={resposta} tentativa={tentativa} terminou={terminado} img_times={img_times}></Tabela>
           </div>
-
           <p className='text-sm sm:text-base pt-6 w-[90%] mx-auto'>With every wrong attempt you have, another stat will be revealed.</p>
           <p className='text-sm sm:text-base p-3 w-[90%] mx-auto'>You may get other tips if you get anything that matches the answer. They will be highlighted in
             <span style={{color:'#a5fa97'}}>&nbsp;green</span>
@@ -148,18 +165,23 @@ export default function Buscar({ lista, resposta, img_times, numero, player_imag
       {terminado && abrirResposta()}
       {(tentativa > 8 && abrirResposta())}
       
-        <Mensagem referencia={respostaRef} img_jogadores={player_images} resposta={resposta} tentativa={tentativa}
-        acertou={acertou} onClose={() => setTerminado(false)}></Mensagem>
-        
-      
+        <Mensagem 
+          referencia={respostaRef} 
+          img_jogadores={player_images} 
+          resposta={resposta} 
+          tentativa={tentativa}
+          acertou={acertou} 
+          onClose={() => setTerminado(false)}>
+        </Mensagem>
+
       {
       replay && 
         <button className='border-2 border-pink px-4 py-2 bg-pink/20 text-white-100 font-bold outline-none mt-4 mb-2 rounded-md hover:bg-pink/30 active:bg-pink/60' onClick={() => window.location.reload()}>Play again</button>
       }
-      {replay &&
+      {
+      replay &&
         <p className='text-sm cursor-pointer font-bold underline' onClick={abrirResposta}>Show answer</p>
       }
-
     </>
     </ThemeProvider>
   )
