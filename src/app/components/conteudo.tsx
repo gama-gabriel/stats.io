@@ -143,7 +143,7 @@ export default function Conteudo({lista, resposta, img_times,  player_images}: {
 
       <dialog 
         ref={dialogRef}
-        className='w-[90%] sm:w-fit rounded-xl bg-purple-500 py-4 px-4 sm:px-6 md:px-2 lg:px-2 drop-shadow-2xl text-white-100 font-bold'
+        className='w-[90%] sm:w-fit rounded-xl bg-purple-500 py-4 px-4 sm:px-6 md:px-2 lg:px-2 drop-shadow-2xl text-white-100 font-bold animate-fade-in'
         onClick={clicarFora}
       >
 
@@ -187,3 +187,4 @@ export default function Conteudo({lista, resposta, img_times,  player_images}: {
   )
 
 }
+
